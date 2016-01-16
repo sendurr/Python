@@ -1,0 +1,99 @@
+.emph {
+	color: #b7080d;
+	font-weight: bold;
+	font-family: Garamond, Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+	background-color: white;
+	padding: 6px;
+}
+.size { font-size: 75% }
+a:visited { color: #cc0000 }
+a:hover { color: #000000; text-decoration: none }
+a:link { color: #cc0000 }
+a img {border: none; }
+
+body {
+	font-family: Verdana, Arial, Helvetica, Geneva, Swiss, SunSans-Regular;
+	background-color: #ffffff;
+	margin: 0px;
+	background-repeat: repeat-y;
+}
+dt { margin-top: 1em }
+h1 {
+	color: #D32329;
+	font-weight: normal;
+	font-family: Garamond, Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+	padding-top: 3px;
+}
+h2 { color: #D32329; font-weight: bold; font-family: Garamond, Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif }
+h3 { color: #D32329; font-weight: bold; font-family: Garamond, Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif }
+.notice {
+	background-color: #F2D6C3;
+	border: 3px solid #8D0135;
+	padding: 6px;
+}
+
+h4 { color: #336699; font-weight: bold; font-family: Garamond, Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif }
+h6 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+strong { font-weight: bold; }
+.cortland_blue { color: #336699; }
+a.white:link, a.white:visited {
+		color: white;
+		font-weight: bold;}
+tr.red { background-color: #c00;}
+table.wide{ font-size: .8em;}
+tr.hdr {
+	background-color: #eee;
+    color: #33c;
+		font-size: 1.2em;}
+tr.shdr {
+	background-color: #eee;
+	color: #000;}
+td.blue {
+	color: #33C;
+    font-weight: 600;}
+
+p.head {
+	margin-left: 5px;
+    margin-top: 2px;
+	margin-bottom: 2px;
+	font-size: 1.2em;
+	color: #c00;}
+p.indent { 
+	margin-left: 20px;
+	margin-top: 0px;
+	margin-bottom: 2px;}
+p.indent1 {
+	margin-left: 40px;
+    margin-top: 0px;
+	margin-bottom: 0px;
+		   }
+.nowrap {
+	white-space: nowrap;
+}
+.center {
+	text-align: center;
+}
+.img_floatr {
+border:none;
+float:right;
+margin-left:10px;
+text-decoration:none;
+}
+
+.img_floatl {
+	border:none;
+	float:left;
+	text-decoration:none;
+	margin-right: 10px;
+}
+.pdf {
+	list-style-image: url(../images/PDFIcon.gif);
+}
+.www {
+	list-style-image: url(../images/world.gif);
+}
+.nobull {
+	list-style-type: none;
+}

@@ -1,0 +1,1 @@
+$("[type='radio'][value='201620']")  ---  invoking JS through CSS
