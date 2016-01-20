@@ -17,6 +17,33 @@ from selenium.webdriver.support.ui import Select
 from bs4 import BeautifulSoup
 from csv import writer
 
+'''################################################################################
+        Output Editor
+                Edits the output strings for the report
+################################################################################'''
+def op_editor( selection, ip_string ):
+
+        # Hour edit
+        if (selection == 1):
+                ip_string =  ip_string.replace(".","")
+                return ip_string
+
+        # Availablity edit                
+        elif (selection == 2):
+                ip_string =  ip_string.replace("CLOSED","0")
+                ip_string =  ip_string.replace("CANCELLED","0")
+                return ip_string.strip( "available seats" )
+
+        # Day edit
+        elif (selection == 3):
+                day_lookup= {'Mon':'M', 'Tue':'T', 'Wed':'W', 'Thu':'H','Fri':'F', 'Sat':'S', 'Sun':'U'}
+                op_string= ""
+                
+                for key in day_lookup:
+                        if ip_string.find(key) != -1:
+                                op_string= op_string + day_lookup[key]
+
+                return op_string
   
 '''################################################################################
         PARSE HTML
@@ -79,7 +106,7 @@ def ParseHTML( data, csvWriter, year, term ):
                                                 subdata_temp = subdata_temp.replace("->","")
                                                 subdata_temp = subdata_temp.replace(u'\xa0', '').encode('utf-8')
                                                 section = subdata_temp[8:11]
-                                                courseNo = subdata_temp[11:]
+                                                courseNo = subdata_temp[14:]
                                         
                                         elif ( sub_index == 1 ):
                                                 instructor = subdata.br.text
@@ -100,7 +127,11 @@ def ParseHTML( data, csvWriter, year, term ):
                                                         availability = subdata.text[3:]
 
 
-                                rowData.extend( [ department, code, name, courseNo , section, instructor ] )
+                                start_time = op_editor(1,start_time)
+                                end_time = op_editor(1,end_time)
+                                availability = op_editor(2,availability)
+                                days = op_editor(3,days)
+                                rowData.extend( [ year , term, code, name, courseNo , section, instructor ] )
                                 rowData.extend( [ start_time, end_time, days, availability] )
                                 csvWriter.writerow( rowData )
                                 del rowData[:]
@@ -241,7 +272,7 @@ def main():
                                         '-y', 
                                         action = 'store', 
                                         dest = 'year', 
-                                        default = 2015,
+                                        default = 2016,
                                         help='year of the semester'
                                         )
         
@@ -283,7 +314,7 @@ def main():
         csvFile         = open( outFilename, "wb" )
         csvWriter       = writer( csvFile, lineterminator = '\n' )
                 
-        csvWriter.writerow( ["Department","Code","Name","Number","Section","Instructor",
+        csvWriter.writerow( ["Year","Term","Department Code","Name","Course No","Section","Instructor",
                              "Start Time","End Time","Days","Availability"
                             ] )
 
